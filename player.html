@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Player Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Player Profile</h1>
+</div>
+
+<div class="container" id="playerArea"></div>
+
+<script>
+
+const playerStats = {
+
+"#44 Nico Ardite (C)":{td:0,tackles:0,blocks:0,img:"nico.png"},
+
+"#15 Gianna DeMaio (A)":{td:0,tackles:0,blocks:0,img:"gianna.png"},
+
+"#8 Nicky Tomasello":{td:0,tackles:0,blocks:0,img:"nicky.png"},
+
+"#48 Noah Ardite (C)":{td:0,tackles:0,blocks:0,img:"noah.png"},
+
+"#8 Keith Mayo JR (A)":{td:0,tackles:0,blocks:0,img:"keith.png"},
+
+"#12 Alex Dohan":{td:0,tackles:0,blocks:0,img:"alex.png"}
+
+};
+const params = new URLSearchParams(window.location.search);
+const name = decodeURIComponent(params.get("name"));
+
+const p = playerStats[name];
+
+if(!p){
+
+document.getElementById("playerArea").innerHTML = `
+<h2>Player not found</h2>
+<a class="link" href="index.html">Home</a>
+`;
+
+}else{
+
+document.getElementById("playerArea").innerHTML = `
+
+<img src="${p.img}" class="playerPic">
+
+<h1>${name}</h1>
+
+<div class="statBox">
+<h2>Touchdowns: ${p.td}</h2>
+<h2>Tackles: ${p.tackles}</h2>
+<h2>Blocks: ${p.blocks}</h2>
+</div>
+<a href="#" onclick="history.back()" class="backButton">Back to Team</a>
+<br>
+<a class="link" href="index.html">Home</a>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>

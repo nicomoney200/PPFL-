@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Player Stats</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Player Profile</h1>
+</div>
+
+<div class="container" id="playerArea"></div>
+
+<script>
+
+const playerStats={
+
+"Nico Ardite (Captain)":{td:0,tackles:0,blocks:0},
+
+"Gianna DeMaio (Alternate Captain)":{td:0,tackles:0,blocks:0},
+
+"Nicky Tomasello":{td:0,tackles:0,blocks:0},
+
+"Noah Ardite (Captain)":{td:0,tackles:0,blocks:0},
+
+"Keith Mayo JR (Alternate Captain)":{td:0,tackles:0,blocks:0},
+
+"Alex Dohan":{td:0,tackles:0,blocks:0}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+
+let p = playerStats[name];
+
+document.getElementById("playerArea").innerHTML=`
+
+<h1>${name}</h1>
+
+<div class="statBox">
+<h2>Touchdowns: ${p.td}</h2>
+<h2>Tackles: ${p.tackles}</h2>
+<h2>Blocks: ${p.blocks}</h2>
+</div>
+
+<br><br>
+<a class="link" href="index.html">Home</a>
+
+`;
+
+</script>
+
+</body>
+</html>

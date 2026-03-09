@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Roster</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Team Roster</h1>
+</div>
+
+<div class="container" id="rosterArea"></div>
+
+<script>
+
+const rosters = {
+
+mega:[
+{name:"#44 Nico Ardite (C)",img:"nico.png"},
+{name:"#15 Gianna DeMaio (A)",img:"gianna.png"},
+{name:"#8 Nicky Tomasello",img:"nicky.png"}
+],
+
+snake:[
+{name:"#48 Noah Ardite (C)",img:"noah.png"},
+{name:"#8 Keith Mayo JR (A)",img:"keith.png"},
+{name:"#12 Alex Dohan",img:"alex.png"}
+]
+
+};
+const params = new URLSearchParams(window.location.search);
+const team = params.get("team");
+
+let html="";
+
+let logo = team==="mega" ? "mega.png" : "snake.png";
+
+html+=`<img src="${logo}" class="leagueLogo">`;
+
+rosters[team].forEach(player=>{
+html+=`
+<div class="playerRow ${team}">
+
+<img src="${player.img}" class="rosterPic">
+
+<a class="playerName" href="player.html?name=${encodeURIComponent(player.name)}">
+${player.name}
+</a>
+
+</div>
+`;
+});
+
+html+=`<br><a class="link" href="index.html">Home</a>`;
+
+document.getElementById("rosterArea").innerHTML = html;
+
+</script>
+
+</body>
+</html>
+<a href="javascript:history.back()">Back</a>

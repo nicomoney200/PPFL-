@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Team Stats</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Team Stats</h1>
+</div>
+
+<div class="container" id="statsArea"></div>
+
+<script>
+
+const stats={
+
+mega:{wins:0,games:0},
+
+snake:{wins:0,games:0}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const team = params.get("team");
+
+let logo = team==="mega" ? "mega.png" : "snake.png";
+let s = stats[team];
+
+document.getElementById("statsArea").innerHTML = `
+<img src="${logo}" class="leagueLogo">
+
+<div class="statBox">
+<h2>Wins: ${s.wins}</h2>
+<h2>Games Played: ${s.games}</h2>
+</div>
+
+<br><br>
+<a class="link" href="index.html">Home</a>
+`;
+
+</script>
+
+</body>
+</html>
